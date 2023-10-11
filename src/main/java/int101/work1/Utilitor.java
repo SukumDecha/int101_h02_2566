@@ -15,24 +15,27 @@ public class Utilitor {
         return value;
     }
 
-    public static long computeIsbn10(long isbn10) {
-        if(isbn10 < 0) throw new IllegalArgumentException("The input must greater than 0.");
-        String numAsString = String.valueOf(isbn10);
+    public static long computeIsbn10(long value) {
+        String cleanedISBN = String.valueOf(value);
 
-        //if(numAsString.length() != 9) throw new IllegalArgumentException("The input must have 9 digits.");
+        // Check if the ISBN has exactly 10 digits
+        if (cleanedISBN.length() != 10) {
+            throw new IllegalArgumentException("Invalid ISBN: must contain exactly 10 digits");
+        }
 
+        // Calculate the sum
         int sum = 0;
         for (int i = 0; i < 9; i++) {
-            int digit = (numAsString.charAt(i) - '0');
+            int digit = cleanedISBN.charAt(i) - '0';
             sum += (i + 1) * digit;
         }
 
-        int checkDigit = sum % 11;
+        int checkDigit = (11 - sum % 11) % 11;
 
-        numAsString += (checkDigit== 10 ? 11 - (sum % 11) : "0" + checkDigit);
-
-        return Long.valueOf(numAsString);
+        // Return the ISBN as a long integer
+        return Long.parseLong(cleanedISBN.substring(0, 9) + checkDigit);
     }
+
 
 
 

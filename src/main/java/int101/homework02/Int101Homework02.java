@@ -67,7 +67,7 @@ public class Int101Homework02 {
             System.out.println("Error appeared: " + e);
         }
 
-        System.out.println("computeIsbn10 method: " + Utilitor.computeIsbn10( 555555555));
+        System.out.println("computeIsbn10 method: " + Utilitor.computeIsbn10( 1_000_000_000));
 
 
 
@@ -188,7 +188,7 @@ public class Int101Homework02 {
         System.out.println( "----------3.6----------");
         Person nine = new Person("Teprawin", "Prueksachat");
         try {
-            Account account = new Account(null);
+            new Account(null);
         } catch (Exception e) {
             System.out.println("Error appeared: " + e.toString());
         }
@@ -199,6 +199,7 @@ public class Int101Homework02 {
         System.out.println("Nine account's no: " + nineAccount.getNo());
         System.out.println("Nine account's owner: " + nineAccount.getOwner());
         System.out.println( "----------3.8----------");
+
         try {
             System.out.println(nineAccount.deposit(-1));
         } catch (Exception e) {
@@ -207,6 +208,7 @@ public class Int101Homework02 {
 
         System.out.println("Nine account's balance (deposit 500): " + nineAccount.deposit(500));
         System.out.println( "----------3.9----------");
+
         try {
             System.out.println(nineAccount.withdraw(-1));
         } catch (Exception e) {
@@ -223,6 +225,7 @@ public class Int101Homework02 {
         } catch (Exception e) {
             System.out.println(e);
         }
+
         nineAccount.transfer(100, karnAccount);
 
         System.out.println("Karn account's balance: " + karnAccount.getBalance());

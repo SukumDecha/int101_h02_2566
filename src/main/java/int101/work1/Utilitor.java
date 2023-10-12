@@ -25,19 +25,34 @@ public class Utilitor {
 
         // Calculate the sum
         int sum = 0;
-        for (int i = 0; i < 9; i++) {
+        for (int i = 10; i > 1; i--) {
+            int digit = cleanedISBN.charAt(10 - i) - '0';
+            sum += (i ) * digit;
+            //System.out.println("i: " + i + "| digit= " + digit + " | value= " + (i * digit));
+        }
+
+        //System.out.println("Sum: " + sum);
+
+        int checkDigit = 11 - (sum % 11);
+
+        System.out.println("checkDigit: " + checkDigit);
+        // Return the ISBN as a long integer
+        //System.out.println("Length: " + cleanedISBN.length());
+        long toReturn = Long.parseLong(cleanedISBN.substring(0, 9) + checkDigit);
+
+        //System.out.println(isIsBn10(toReturn) ? "Hell yea" : "Naj");
+        return toReturn;
+
+    }
+
+    public static boolean isIsBn10(long value) {
+        String cleanedISBN = String.valueOf(value);
+        int sum = 0;
+        for (int i = 0; i < 10; i++) {
             int digit = cleanedISBN.charAt(i) - '0';
             sum += (i + 1) * digit;
         }
 
-        int checkDigit = (11 - sum % 11) % 11;
-
-        // Return the ISBN as a long integer
-        return Long.parseLong(cleanedISBN.substring(0, 9) + checkDigit);
+        return sum % 11 == 0;
     }
-
-
-
-
-
 }

@@ -186,14 +186,17 @@ public class Int101Homework02 {
        3.13 Show in this "work03Account" method how to use 3.6-3.12
             and check their correctness. */
         System.out.println( "----------3.6----------");
-        Person nine = new Person("Teprawin", "Prueksachat");
+
         try {
             new Account(null);
         } catch (Exception e) {
             System.out.println("Error appeared: " + e.toString());
         }
+
+        Person nine = new Person("Teprawin", "Prueksachat");
         Account nineAccount = new Account(nine);
         System.out.println("Nine account has been created.");
+
         System.out.println( "----------3.7----------");
         System.out.println("Nine account's balance: " + nineAccount.getBalance() + "$");
         System.out.println("Nine account's no: " + nineAccount.getNo());
@@ -233,7 +236,7 @@ public class Int101Homework02 {
 
         System.out.println( "----------3.11----------");
         System.out.println(nineAccount.toString());
-
+        System.out.println(karnAccount.toString());
         System.out.println( "----------3.12----------");
         System.out.println("Nine's account equals Nine's account: " + nineAccount.equals(nineAccount));
         System.out.println("Karn's account equals Karn's account: " + karnAccount.equals(karnAccount));
